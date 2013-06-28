@@ -69,7 +69,7 @@ def profilechange(request):
         
        
     else:
-        form = ProfileChangeForm()
+        form = CourseEditForm()
        
        
        

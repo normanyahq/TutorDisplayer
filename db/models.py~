@@ -52,7 +52,7 @@ class UserProfile(models.Model):
     speciality = models.CharField(max_length=200,blank = True, null = True)
     additional_info =  models.CharField(max_length=500,blank = True, null = True)
     course = models.CharField(max_length=200,blank = True)
-    district = models.CharField(max_length=200,blank = True) #delete later
+    district = models.CharField(max_length=200,blank = True)
     time_period = models.ManyToManyField(TimePeriod, null = True, related_name = 'user')
     area = models.ManyToManyField(District, blank = True, related_name = 'user')
     taobao_link = models.URLField(blank = True,null = True)

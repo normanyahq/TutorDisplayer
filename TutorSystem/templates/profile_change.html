@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+  {% block title %}
+    User Account: Email Change
+  {% endblock %}
+  
+  {% block heading %}
+    <h1>User Account: Profile Change</h1>
+  {% endblock %}
+
+  {% block content %}
+    {% if change %}
+    <p style = "color:red">Change profile succesfully!</p>
+    {% endif %}
+    <form method="post" action=".">
+      {% csrf_token %}
+      <table>
+      <tr><th><label for="id_name">Name:</label></th><td><input id="id_name" maxlength="30" name="name" type="text" /></td></tr>
+<tr><th><label for="id_school">School:</label></th><td><input id="id_school" maxlength="40" name="school" type="text" /></td></tr>
+<tr><th><label for="id_subject">Subject:</label></th><td><input id="id_subject" name="subject" type="text" /></td></tr>
+<tr><th><label for="id_cellphone">Cellphone:</label></th><td><input id="id_cellphone" maxlength="40" name="cellphone" type="text" /></td></tr>
+<tr><th><label for="id_honour">Honour:</label></th><td><input id="id_honour" maxlength="200" name="honour" type="text" /></td></tr>
+<tr><th><label for="id_speciality">Speciality:</label></th><td><input id="id_speciality" maxlength="200" name="speciality" type="text" /></td></tr>
+<tr><th><label for="id_additional_info">Additional_info:</label></th><td><input id="id_additional_info" maxlength="500" name="additional_info" type="text" /></td></tr>
+<tr><th><label for="id_course">Course:</label></th><td><input id="id_course" maxlength="200" name="course" type="text" /></td></tr>
+<tr><th><label for="id_area">Area:</label></th><td><input id="id_area" maxlength="200" name="area" type="text" /></td></tr>
+<tr><th><label for="id_time_period">TimePeriod:</label></th><td><input id="id_time_period" name="time_period" type="text" /></td></tr>
+<tr><th><label for="id_potrait">Potrait:</label></th><td><input id="id_potrait" name="potrait" type="file" /></td></tr>
+        
+     </table>
+        <input id="submit" type="submit" value="update" />
+        
+    </form>
+  {% endblock %}
