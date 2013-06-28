@@ -4,7 +4,7 @@
   
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 
-
+{% block special %}{% endblock %}
 
 <head>
     <title>
@@ -13,5 +13,13 @@
 </head>
 
 <body>
+    <h1>{% block head %}{% endblock%}</h1>
+    
+    {% block content%}Login{% endblock %}
+
     
 </body>
+
+<tail>
+{% block tail %}{% endblock%}
+</tail>
