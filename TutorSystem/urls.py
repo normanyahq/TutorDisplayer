@@ -6,10 +6,6 @@ from django.contrib.auth.views import login, logout
 from django.conf import settings
 from django.conf.urls.defaults import *
 import views
-
-
-
-
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -18,6 +14,10 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'TutorSystem.views.home', name='home'),
     # url(r'^TutorSystem/', include('TutorSystem.foo.urls')),
+    url(r'^submittutorrequest/$', views.submit_tutor_request),
+    url(r'^filltutorrequest/$', views.fill_tutor_request),
+    url(r'^tutordisplay/$', views.tutordisplay),
+    url(r'^detailed_info/$', views.tutorinfo),
     url(r'^home/$',views.home),
     url(r'^login/$',views.login),
     url(r'^login_success/$',views.login_success),

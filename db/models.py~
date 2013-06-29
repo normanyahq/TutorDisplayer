@@ -25,6 +25,14 @@ TIME_CHOICES = (
 '''
 
 # Create your models here.
+
+class TutorRequest(models.Model):
+    applicant_name = models.CharField(max_length = 20)
+    mobile_number = models.CharField(max_length = 20)
+    address = models.CharField(max_length = 150)
+    additional_info = models.TextField()
+    
+
 class Subject(models.Model):
     name = models.CharField(max_length=50)
 
@@ -45,7 +53,7 @@ def file_name(instance):
     return '/'.join['potrait',str(instance.userprofile.id)]
     
 class UserProfile(models.Model):
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, related_name = 'profile')
     name = models.CharField(max_length=30, blank=True, null = True)
     GENDER_CHOICE = (
         (u'M', u'Male'),
@@ -60,12 +68,18 @@ class UserProfile(models.Model):
     speciality = models.CharField(max_length=200,blank = True, null = True)
     additional_info =  models.CharField(max_length=500,blank = True, null = True)
     course = models.CharField(max_length=200,blank = True)
+<<<<<<< HEAD
     district = models.CharField(max_length=200,blank = True) #delete later
+    time_period = models.ManyToManyField(TimePeriod, blank = True,null = True, related_name = 'user')
+    area = models.ManyToManyField(District, blank = True, null = True,related_name = 'user')
+=======
     time_period = models.ManyToManyField(TimePeriod, null = True, related_name = 'user')
     area = models.ManyToManyField(District, blank = True, related_name = 'user')
+>>>>>>> 66649bab3d525dd049ba1934c71f2e42b6f52bf5
     taobao_link = models.URLField(blank = True,null = True)
     confirmed = models.BooleanField(default = False)
     potrait = models.ImageField(upload_to = file_name,blank = True, null = True)
+    salary_per_hour = models.PositiveIntegerField(default = 0)
     def __unicode__(self):
             return self.user.username
   
