@@ -59,7 +59,7 @@ class UserProfile(models.Model):
     potrait = models.ImageField(upload_to = file_name,blank = True, null = True)
     salary_per_hour = models.PositiveIntegerField(default = 0)
     def __unicode__(self):
-            return self.name
+            return self.user.username
   
 def create_user_profile(sender, instance, created, **kwargs):
     """
