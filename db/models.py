@@ -59,7 +59,7 @@ class UserProfile(models.Model):
     confirmed = models.BooleanField(default = False)
     potrait = models.ImageField(upload_to = file_name,blank = True, null = True)
     def __unicode__(self):
-            return self.name
+            return self.user.username
   
 def create_user_profile(sender, instance, created, **kwargs):
     """
