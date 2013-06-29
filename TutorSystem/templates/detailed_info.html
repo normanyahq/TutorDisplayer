@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+  {% block title %}
+    Detailed Information
+  {% endblock %}
+  
+  
+
+
+  
+  {% block content %}
+  <th>
+    <td>编号：{{user.profile.id}} </td>
+    <td>姓名：{{user.profile.name}} </td>
+    <td>就读学校：{{user.profile.school}}</td>
+    <td>授课学科：{{user.profile.subject}} </td>
+    <td>授课区域：{{user.profile.area.name}}</td>
+    <td>个人简介：{{user.profile.additional_info}} </td>
+    <td>获得荣誉：{{user.profile.speciality}} </td>
+    <td>特长：{{user.profile.speciality}} </td>
+    <td>头像：</td>
+    <td>淘宝链接：{{user.profile.taobao_link}} </td>
+    <td>最低时薪：{{user.profile.salary_per_hour}} </td>
+    
+    想要与他联系？请填写下面的信息：
+  </th>
+  {% endblock %}

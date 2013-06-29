@@ -7,12 +7,16 @@
   
   
 
-    <h1>
-      Welcome 
-    </h1>
+
   
   {% block content %}
   {% for item in candidate %}
-        {{item.name}} dd
+  <th>
+    <td>姓名：{{item.profile.name}} </td>
+    <td>就读学校：{{item.profile.school}}</td>
+    <td>授课学科：{{item.profile.subject}} </td>
+    <td>授课区域：{{item.profile.area.name}}</td>
+    <td>个人简介：{{item.profile.additional_info}} </td>
+  </th>
   {% endfor %}
   {% endblock %}

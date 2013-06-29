@@ -25,6 +25,13 @@ TIME_CHOICES = (
 '''
 
 # Create your models here.
+
+class TutorRequest(models.Model):
+    applicant_name = models.CharField(max_length = 20)
+    mobile_number = models.CharField(max_length = 20)
+    address = models.CharField(max_length = 150)
+    
+
 class Subject(models.Model):
     name = models.CharField(max_length=50)
 
@@ -43,7 +50,7 @@ def file_name(instance):
     return '/'.join['potrait',str(instance.userprofile.id)]
     
 class UserProfile(models.Model):
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, related_name = 'profile')
     name = models.CharField(max_length=30, blank=True, null = True)
     school = models.CharField(max_length=40,blank = True, null = True)
     subject = models.ForeignKey(Subject, blank = True, null = True)
@@ -59,7 +66,7 @@ class UserProfile(models.Model):
     potrait = models.ImageField(upload_to = file_name,blank = True, null = True)
     salary_per_hour = models.PositiveIntegerField(default = 0)
     def __unicode__(self):
-            return self.name
+            return self.user.username
   
 def create_user_profile(sender, instance, created, **kwargs):
     """

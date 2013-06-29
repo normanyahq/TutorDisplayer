@@ -25,6 +25,14 @@ TIME_CHOICES = (
 '''
 
 # Create your models here.
+
+class TutorRequest(models.Model):
+    applicant_name = models.CharField(max_length = 20)
+    mobile_number = models.CharField(max_length = 20)
+    address = models.CharField(max_length = 150)
+    additional_info = models.TextField()
+    
+
 class Subject(models.Model):
     name = models.CharField(max_length=50)
 

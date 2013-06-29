@@ -8,12 +8,36 @@ from django.template import RequestContext
 from django.db.models import *
 from db.models import *
 from db.forms import *
+from forms import *
 import json
 
+def submit_tutor_request(request):
+    if request.method == "GET":
+        return HttpResponse("Invalid Post")
+    tutor_request_form = SubmitRequest(request.POST)
+    if tutor_request_form.is_valid():
+        tutor_request_form.save()
+        return HttpResponse("Succeeded")
+    else:
+        return HttpResponse("Invalid Post")
+
+def fill_tutor_request(request):
+    form = SubmitRequest()
+    return render_to_response('fill_request.html', locals(), context_instance=RequestContext(request))
+    
+
+def tutorinfo(request):
+    if 'user_id' in request.GET and request.GET['user_id']:
+        print int(request.GET['user_id'])
+        user = User.objects.get(id=int(request.GET['user_id']))
+    else:
+        return HttpResponse(u"no such tutor")
+    return render_to_response('detailed_info.html', locals(), context_instance=RequestContext(request))
 
 def tutordisplay(request):
     candidate = User.objects.all()
-    print candidate
+    timeslot = TimePeriod.objects.all()
+#    print candidate
     if 'TimePeriod' in request.GET and request.GET['TimePeriod']:
         time_period = json.loads(request.GET['TimePeriod'])
         for time_period_id in time_period:
@@ -22,8 +46,12 @@ def tutordisplay(request):
         subject = json.loads(request.GET['Subject'])
         for subject_id in subject:
             candidate = candidate.filter(profile__subject__id = subject_id)
+    if 'District' in request.GET and request.GET['District']:
+        district = json.loads(request.GET['District'])
+        for district_id in district:
+            candidate = candidate.filter(profile__area__id = district_id)
     candidate.order_by('salary_per_hour')
-    print candidate
+#    print candidate
     return render_to_response('display.html', locals(), context_instance=RequestContext(request))
 
 def home(request):
