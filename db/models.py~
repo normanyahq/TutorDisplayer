@@ -43,7 +43,7 @@ def file_name(instance):
     return '/'.join['potrait',str(instance.userprofile.id)]
     
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, related_name = 'profile')
+    user = models.OneToOneField(User)
     name = models.CharField(max_length=30, blank=True, null = True)
     school = models.CharField(max_length=40,blank = True, null = True)
     subject = models.ForeignKey(Subject, blank = True, null = True)

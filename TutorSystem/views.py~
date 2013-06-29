@@ -23,7 +23,6 @@ def tutordisplay(request):
         for subject_id in subject:
             candidate = candidate.filter(profile__subject__id = subject_id)
     candidate.order_by('salary_per_hour')
-    print candidate
     return render_to_response('display.html', locals(), context_instance=RequestContext(request))
 
 def home(request):
