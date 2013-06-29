@@ -1,21 +1,21 @@
 {% extends "base.html" %}
 
   {% block title %}
-    User Account: Email Change
+    User Account: Image
   {% endblock %}
   
   {% block heading %}
-    <h1>User Account: Profile Change</h1>
+    <h1>Image</h1>
   {% endblock %}
 
   {% block content %}
-    {% if change %}
-    <p style = "color:red">Change profile succesfully!</p>
-    {% endif %}
+    <img src = ""></img>
     <form method="post" action=".">
       {% csrf_token %}
       <table>
-        {{form.as_table}}
+<tr><th><label for="id_image">Image:</label></th><td><input id="id_image" name="
+image" type="file" /></td></tr>
+
      </table>
         <input id="submit" type="submit" value="update" />
         

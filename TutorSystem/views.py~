@@ -74,7 +74,7 @@ def imagehandle(request):
     if request.method == 'POST':
         if form.is_valid:
             #profile.potrait = request.FILES['file']
-            sp = request
+            sp = request.POST
             sad
             profile.save()
     else:

@@ -24,7 +24,7 @@ urlpatterns = patterns('',
     url(r'^accounts/logout/$', logout,{'next_page':'/home/'}), 
     url(r'profile_change/',views.profilechange),
     url(r'password_change/',views.passwordchange),
-    url(r'imagehandle/',views.imagehandle),
+    url(r'image_ahndle/',views.passwordchange),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
